@@ -1,8 +1,12 @@
 # DeepEntry
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19994995.svg)](https://doi.org/10.5281/zenodo.19994995)
+
 DeepEntry is a leakage-aware framework for prioritizing host receptor candidates for viral entry proteins. The release provides lightweight verification utilities, public-facing result tables, and documentation for using the accompanying data and selected model checkpoints.
 
 This repository accompanies a manuscript under consideration. It is not a clinical diagnostic tool. CRISPR/siRNA host-factor screens are used as plausibility support and do not constitute direct receptor validation.
+
+GitHub repository: https://github.com/adistman/DeepEntry
 
 ## Repository contents
 
@@ -12,7 +16,7 @@ This repository accompanies a manuscript under consideration. It is not a clinic
 - `results/`: manuscript-facing benchmark and diagnostic tables.
 - `docs/`: installation, data and reproducibility notes.
 
-Large data files, selected model checkpoints and figure PDFs are distributed in the companion Zenodo-style archive. After formal deposition, cite the Zenodo DOI in the manuscript data-availability statement.
+Large data files, selected model checkpoints and figure PDFs are distributed in the companion archive: https://doi.org/10.5281/zenodo.19994995.
 
 ## Installation
 
@@ -42,7 +46,7 @@ Expected headline metrics for the 38-virus leave-one-virus-out benchmark:
 
 ## Citation
 
-Please cite the associated manuscript. A final DOI and formatted citation should be added after journal and data-archive deposition.
+Please cite the associated manuscript and the archived companion dataset: https://doi.org/10.5281/zenodo.19994995.
 
 ## License
 
