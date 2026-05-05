@@ -1,0 +1,12 @@
+model	scope	n_seeds	n_viruses	MRR	Recall@10	Recall@20	MRR_CI95_or_note
+DeepEntry	38-virus unified candidate pool	3	38	0.4011	0.6491	0.7368	[0.285843,0.521444]
+DeepViral	38-virus unified candidate pool	3	38	0.0597	0.193	0.2456	[0.028652,0.097579]
+PIPR-style RCNN	38-virus unified candidate pool	3	38	0.0237	0.0614	0.0789	[0.013326,0.036064]
+STEP-style Siamese	38-virus unified candidate pool	3	38	0.0138	0.0088	0.0175	[0.003412,0.032806]
+D-SCRIPT tt3d	38-virus unified candidate pool	1	38	0.008	0.0263	0.0263	[0.001847,0.019310]
+DeepGNHV	38-virus unified candidate pool	1	38	0.0035	0.0	0.0	[0.002162,0.005437]
+D-SCRIPT v2	38-virus unified candidate pool	1	38	0.0028	0.0	0.0	[0.001451,0.004527]
+D-SCRIPT v1	38-virus unified candidate pool	1	38	0.0022	0.0	0.0	[0.001100,0.003769]
+ESM-2 cosine similarity	LOVO31 simple baseline	-	31	0.0044	0.0		no training
+Random candidate order	LOVO31 simple baseline	-	31	0.0033	0.0		random baseline from cosine report
+BLAST transfer	LOVO31 simple baseline	-	31	0.0033	0.0		sequence-transfer baseline

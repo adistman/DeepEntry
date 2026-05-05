@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software or the accompanying data, please cite the associated manuscript and archived dataset."
+title: "DeepEntry: leakage-aware receptor-candidate prioritization for virus-host entry analysis"
+version: 1.0.0
+date-released: 2026-05-05
+authors:
+  - family-names: "Luan"
+    given-names: "Junwen"
+license: MIT

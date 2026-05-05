@@ -1,0 +1,7 @@
+analysis	scope	n_runs	n_viruses	MRR	Recall@10	Recall@20	MRR_run_std
+Ranker only	38-virus leave-one-virus-out benchmark	3	38.0	0.3509	0.6491	0.7544	0.0063
+Ranker plus controlled dynamic prior	38-virus leave-one-virus-out benchmark	3	38.0	0.4011	0.6491	0.7368	0.0122
+Host-frequency prior only	38-virus leave-one-virus-out benchmark	0	38.0	0.0436	0.1842	0.2368	
+Virus-label prior only	38-virus leave-one-virus-out benchmark	0	38.0	0.0014	0.0	0.0	
+Family prior only	38-virus leave-one-virus-out benchmark	0	38.0	0.0014	0.0	0.0	
+Pairwise/BCE objective diagnostic	Prespecified 12-virus objective diagnostic subset	1	12.0	0.1859	0.25		

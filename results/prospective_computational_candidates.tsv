@@ -1,0 +1,16 @@
+viral_id	virus_label	family	rank	candidate_uniprot	candidate_gene	score	length	tm_count	membrane_pred	rationale
+P03200	EBV	Herpesviridae	1	P98172	EFNB1	1.8082	346	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P06477	HSV-1	Herpesviridae	1	Q9H3R2	MUC13	1.8809	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P12824	CMV	Herpesviridae	1	Q9H3R2	MUC13	1.8436	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P03277	Adenovirus	Polyomaviridae	1	Q8TDQ0	HAVCR2	1.7951	301	2	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P03279	Adenovirus	Polyomaviridae	1	Q9H3R2	MUC13	1.8158	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P03188	EBV	Herpesviridae	2	Q9H3R2	MUC13	1.8008	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P10211	HSV-1	Herpesviridae	2	P08174	CD55	1.8224	381	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P16730	CMV	Herpesviridae	2	P10721	KIT	1.7964	976	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+Q05320	Ebola	Filoviridae	6	Q9H3R2	MUC13	1.7834	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P0C6X7	SARS-CoV	Coronaviridae	2	P02749	APOH	1.8951	345	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P0DTC2	SARS-CoV-2	Coronaviridae	2	P27797	CALR	1.8916	417	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P16494			2	P05107	ITGB2	1.8203	769	2	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P27289	Coxsackievirus B	Picornaviridae	2	Q9H3R2	MUC13	1.8444	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P36298			2	O75096	LRP4	1.7933	1905	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+Q5I3N2			2	Q8N3J6	CADM2	1.9991	435	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor

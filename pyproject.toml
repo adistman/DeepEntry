@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepentry"
+version = "1.0.0"
+description = "Leakage-aware receptor-candidate prioritization utilities for virus-host entry analysis"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Junwen Luan"}]
+dependencies = ["numpy", "pandas", "scipy", "pyyaml"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
