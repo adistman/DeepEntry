@@ -10,4 +10,6 @@ The companion archive contains:
 - manuscript figure PDFs;
 - benchmark and diagnostic result tables.
 
-The checkpoint and per-fold result directories use public protocol names and omit internal experiment labels and local filesystem paths. Use the result tables for manuscript verification and use the scripts in this repository to validate file presence and headline metrics.
+The checkpoint and per-fold result directories use stable public protocol names. Use the result tables for manuscript verification and use the scripts in this repository to validate file presence and headline metrics.
+
+The companion archive also includes the 2,922-protein receptor candidate pool and the 38 benchmark viral protein sequences used for release-level reproducibility checks.

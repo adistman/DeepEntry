@@ -6,7 +6,4 @@ date-released: 2026-05-05
 authors:
   - family-names: "Luan"
     given-names: "Junwen"
-doi: "10.5281/zenodo.19994995"
-url: "https://doi.org/10.5281/zenodo.19994995"
-repository-code: "https://github.com/adistman/DeepEntry"
 license: MIT

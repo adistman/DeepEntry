@@ -1,22 +1,21 @@
 # DeepEntry
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19994995.svg)](https://doi.org/10.5281/zenodo.19994995)
-
 DeepEntry is a leakage-aware framework for prioritizing host receptor candidates for viral entry proteins. The release provides lightweight verification utilities, public-facing result tables, and documentation for using the accompanying data and complete 38-fold benchmark checkpoint sets.
 
-This repository accompanies a manuscript under consideration. It is not a clinical diagnostic tool. CRISPR/siRNA host-factor screens are used as plausibility support and do not constitute direct receptor validation.
+This repository accompanies a manuscript under consideration. It is not a clinical diagnostic tool. CRISPR/siRNA host-factor screens are used as host-factor context and do not constitute direct receptor validation.
 
-GitHub repository: https://github.com/adistman/DeepEntry
+Repository URL and archive DOI should be filled in only after the public repository and data archive are reachable.
 
 ## Repository contents
 
 - `src/deepentry/`: small utilities for loading release tables and computing ranking metrics.
-- `scripts/verify_release.py`: validates the Zenodo-style data bundle and reproduces headline table checks.
+- `scripts/verify_release.py`: validates the companion data bundle and reproduces headline table checks.
+- `scripts/check_checkpoint.py`: verifies that a released checkpoint can be loaded with the public model definition.
 - `configs/deepentry_ranker_public.yaml`: public configuration template with relative paths.
 - `results/`: manuscript-facing benchmark and diagnostic tables.
 - `docs/`: installation, data and reproducibility notes.
 
-Large data files, complete 38-fold benchmark checkpoint sets and figure PDFs are distributed in the companion archive: https://doi.org/10.5281/zenodo.19994995.
+Large data files, complete 38-fold benchmark checkpoint sets and figure PDFs are distributed in the companion archive.
 
 ## Installation
 
@@ -32,7 +31,8 @@ pip install -r requirements.txt
 From the repository root, run:
 
 ```bash
-python scripts/verify_release.py --zenodo-root ../deepentry-zenodo-release
+python scripts/verify_release.py --zenodo-root ../deepentry-zenodo-release-complete
+python scripts/check_checkpoint.py --checkpoint ../deepentry-zenodo-release-complete/models/receptor_ranker_38fold/leave_one_virus/replicate_01/fold_001/model_best.pth
 ```
 
 Expected headline metrics for the 38-virus leave-one-virus-out benchmark:
@@ -46,7 +46,7 @@ Expected headline metrics for the 38-virus leave-one-virus-out benchmark:
 
 ## Citation
 
-Please cite the associated manuscript and the archived companion dataset: https://doi.org/10.5281/zenodo.19994995.
+Please cite the associated manuscript and the archived companion dataset. Add the final repository URL and archive DOI here once they are public.
 
 ## License
 

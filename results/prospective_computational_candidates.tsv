@@ -2,8 +2,8 @@ viral_id	virus_label	family	rank	candidate_uniprot	candidate_gene	score	length	t
 P03200	EBV	Herpesviridae	1	P98172	EFNB1	1.8082	346	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
 P06477	HSV-1	Herpesviridae	1	Q9H3R2	MUC13	1.8809	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
 P12824	CMV	Herpesviridae	1	Q9H3R2	MUC13	1.8436	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
-P03277	Adenovirus	Polyomaviridae	1	Q8TDQ0	HAVCR2	1.7951	301	2	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
-P03279	Adenovirus	Polyomaviridae	1	Q9H3R2	MUC13	1.8158	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P03277	Adenovirus	Adenoviridae	1	Q8TDQ0	HAVCR2	1.7951	301	2	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
+P03279	Adenovirus	Adenoviridae	1	Q9H3R2	MUC13	1.8158	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
 P03188	EBV	Herpesviridae	2	Q9H3R2	MUC13	1.8008	512	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
 P10211	HSV-1	Herpesviridae	2	P08174	CD55	1.8224	381	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor
 P16730	CMV	Herpesviridae	2	P10721	KIT	1.7964	976	1	True	top-10 candidate not present in the curated receptor gold set; prioritize for literature/experimental follow-up, not claimed as validated receptor

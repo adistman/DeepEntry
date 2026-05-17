@@ -21,6 +21,12 @@ def check_count(label: str, observed: int, expected: int, errors: list[str]) -> 
         errors.append(f"{label} count mismatch: observed {observed}, expected {expected}")
 
 
+def count_fasta_records(path: Path) -> int:
+    if not path.exists():
+        return 0
+    return sum(1 for line in path.read_text(encoding="utf-8").splitlines() if line.startswith(">"))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--zenodo-root", type=Path, required=True, help="Unpacked companion archive root")
@@ -49,7 +55,9 @@ def main() -> int:
         args.zenodo_root / "metadata/benchmark_run_manifest.json",
         args.zenodo_root / "data/training/integrated_dataset_clean.tsv",
         args.zenodo_root / "data/validation/crispr_recall_top200_20260308.tsv",
-        args.zenodo_root / "figures/main/Figure1_workflow_updated.pdf",
+        args.zenodo_root / "data/training/receptor_candidate_pool_ids.txt",
+        args.zenodo_root / "data/training/receptor_candidate_pool.fasta",
+        args.zenodo_root / "figures/main/Figure1_workflow.pdf",
         args.zenodo_root / "figures/main/Figure2_benchmark.pdf",
         args.zenodo_root / "figures/supplementary/FigureS1_bio_credibility.pdf",
         args.zenodo_root / "results/main_benchmark_38virus.tsv",
@@ -59,6 +67,16 @@ def main() -> int:
     for path in required:
         check_file(path, errors)
 
+    candidate_ids = args.zenodo_root / "data/training/receptor_candidate_pool_ids.txt"
+    if candidate_ids.exists():
+        count = len([line for line in candidate_ids.read_text(encoding="utf-8").splitlines() if line.strip()])
+        check_count("receptor candidate pool", count, 2922, errors)
+    check_count(
+        "receptor candidate FASTA",
+        count_fasta_records(args.zenodo_root / "data/training/receptor_candidate_pool.fasta"),
+        2922,
+        errors,
+    )
     model_root = args.zenodo_root / "models/receptor_ranker_38fold"
     if model_root.exists():
         checkpoint_files = list(model_root.glob("*/*/fold_*/model_best.pth"))
