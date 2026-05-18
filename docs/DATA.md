@@ -1,5 +1,7 @@
 # Data Archive
 
+The companion archive is available at https://doi.org/10.5281/zenodo.20049088.
+
 The companion archive contains:
 
 - curated training pairs;

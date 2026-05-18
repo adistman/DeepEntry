@@ -4,7 +4,9 @@ DeepEntry is a leakage-aware framework for prioritizing host receptor candidates
 
 This repository accompanies a manuscript under consideration. It is not a clinical diagnostic tool. CRISPR/siRNA host-factor screens are used as host-factor context and do not constitute direct receptor validation.
 
-Repository URL and archive DOI should be filled in only after the public repository and data archive are reachable.
+Repository URL: https://github.com/adistman/DeepEntry
+
+Data and model archive: https://doi.org/10.5281/zenodo.20049088
 
 ## Repository contents
 
@@ -46,7 +48,10 @@ Expected headline metrics for the 38-virus leave-one-virus-out benchmark:
 
 ## Citation
 
-Please cite the associated manuscript and the archived companion dataset. Add the final repository URL and archive DOI here once they are public.
+Please cite the associated manuscript and the archived companion dataset.
+
+- Code repository: https://github.com/adistman/DeepEntry
+- Data and model archive: https://doi.org/10.5281/zenodo.20049088
 
 ## License
 

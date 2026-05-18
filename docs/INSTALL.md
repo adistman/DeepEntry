@@ -15,6 +15,4 @@ To load released model checkpoints, install the optional model dependency:
 pip install -e ".[model]"
 ```
 
-The large data archive is not stored in the code repository. Download and unpack the companion archive next to this repository, or set `DEEPENTRY_DATA_ROOT` and `DEEPENTRY_MODEL_ROOT` to the relevant locations.
-
-Add the final public archive DOI to this file once the repository deposition is complete.
+The large data archive is not stored in the code repository. Download it from https://doi.org/10.5281/zenodo.20049088 and unpack the companion archive next to this repository, or set `DEEPENTRY_DATA_ROOT` and `DEEPENTRY_MODEL_ROOT` to the relevant locations.
