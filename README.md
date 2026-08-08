@@ -80,7 +80,12 @@ pool and selection protocol. Method naming follows the release file
 | Prior (family) | 0.0011 | 0.0000 | 0.0000 |
 | Prior (virus label) | 0.0008 | 0.0000 | 0.0000 |
 
-Full per-virus ranks and per-seed scores are included in the v1.1.0 release package.
+Full per-virus ranks and per-seed scores are included in the v1.1.0
+release package. The per-method baseline prediction files behind this
+table (193,480 scored pairs per file, one file per method and seed,
+sha256-checked) are included in the package under
+`results/baseline_predictions/`; method definitions, parameters and
+source references are documented in `README_baselines.md`.
 
 ## Metric definition and aggregation
 
