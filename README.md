@@ -42,6 +42,19 @@ Aggregate metrics over the 56 benchmark viruses (3-seed z-score mean ensemble); 
 
 Full per-virus ranks and per-seed scores are included in the v1.1.0 release package.
 
+## Metric definition and aggregation
+
+Reported metrics are computed per seed and per benchmark virus. For each
+held-out virus, only its best-known receptor counts: among the gold pairs of
+that virus, the smallest rank is taken. Per-virus MRR is the reciprocal of
+that rank (viruses without a known receptor contribute 0); per-virus
+Recall@10 and Recall@20 indicate whether the best-known receptor ranks within
+the top 10 or top 20. Per-seed scores are the mean over the 56 benchmark
+viruses; the headline numbers are the mean of the three per-seed scores
+(seeds 42, 43 and 44). `scripts/aggregate_lovo56_metrics.py` recomputes the
+headline metrics from `results/lovo56_fullrank_3seed_zscore_mean.tsv` and
+checks them against `results/lovo56_benchmark_11_methods.tsv`.
+
 ## Repository contents
 
 - `models/`: public model definition (`low_rank_model.py`, LowRankInteractionModel) used by the released checkpoints.

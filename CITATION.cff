@@ -6,4 +6,8 @@ date-released: 2026-08-08
 authors:
   - family-names: "Luan"
     given-names: "Junwen"
+    # TODO before submission: fill in the author's ORCID iD and affiliation.
+    orcid: "https://orcid.org/0000-0000-0000-0000"
 license: MIT
+# TODO before submission: add a preferred-citation entry for the manuscript
+# and the Zenodo DOI of the v1.1.0 dataset archive once it is registered.

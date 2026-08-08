@@ -30,18 +30,19 @@ LOVO protocol:
   Report mean ± std across all valid folds.
 
 Usage:
-    # Full LOVO (all folds)
-    python train_stage3_receptor.py --config config/stage3_receptor_config.yaml
+    # Full LOVO (all folds); run from the unpacked dataset archive root so
+    # that the config's relative paths resolve (see docs/REPRODUCE.md)
+    python train_stage3_receptor.py --config models/lovo56/config_seed42.yaml
 
     # Single fold (parallelizable)
-    python train_stage3_receptor.py --config config/stage3_receptor_config.yaml --fold_idx 3
+    python train_stage3_receptor.py --config models/lovo56/config_seed42.yaml --fold_idx 3
 
     # Smoke test (3 folds, 5 epochs each)
-    python train_stage3_receptor.py --config config/stage3_receptor_config.yaml \\
+    python train_stage3_receptor.py --config models/lovo56/config_seed42.yaml \\
         --max_folds 3 --epochs 5 --out_dir outputs/stage3_smoke_test
 
     # Aggregate results after all folds finish
-    python train_stage3_receptor.py --config config/stage3_receptor_config.yaml \\
+    python train_stage3_receptor.py --config models/lovo56/config_seed42.yaml \\
         --aggregate_only
 """
 

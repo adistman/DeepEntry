@@ -13,7 +13,7 @@ class LowRankInteractionModel(nn.Module):
     低秩投影交互模型
 
     架构:
-    1. 投影: 1280 → proj_dim (128/256)
+    1. 投影: esm_dim (5120) → proj_dim (128/256)
     2. 交互: concat([v, h, v*h, |v-h|])
     3. MLP分类器
     """
