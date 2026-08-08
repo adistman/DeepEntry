@@ -44,11 +44,13 @@ Full per-virus ranks and per-seed scores are included in the v1.1.0 release pack
 
 ## Repository contents
 
-- `src/deepentry/`: small utilities for loading release tables and computing ranking metrics.
+- `models/`: public model definition (`low_rank_model.py`, LowRankInteractionModel) used by the released checkpoints.
+- `train_stage3_receptor.py`: leave-one-virus-out (LOVO) fine-tuning entry point for the LOVO56 benchmark.
 - `scripts/verify_release.py`: validates a companion data bundle and reproduces headline table checks.
 - `scripts/check_checkpoint.py`: verifies that a released checkpoint can be loaded with the public model definition.
-- `configs/deepentry_ranker_public.yaml`: public configuration template with relative paths.
+- `configs/deepentry_lovo56_public.yaml`: LOVO56 configuration template with package-relative paths.
 - `results/`: manuscript-facing benchmark and diagnostic tables.
+- `tests/`: unit tests for the public model definition.
 - `docs/`: installation, data and reproducibility notes.
 
 Large data files, complete fold-checkpoint sets and figure PDFs are distributed in the companion archives listed under Releases.
@@ -64,7 +66,14 @@ pip install -r requirements.txt
 
 ## Verification utilities
 
-`scripts/verify_release.py` and `scripts/check_checkpoint.py` validate the structure of a companion data bundle and verify that released checkpoints load with the public model definition. These utilities correspond to the v1.0.0 code snapshot; the v1.1.0 data package is self-described by its manifest (`MANIFEST.txt`) and can be inspected through the tables under `results/` in the release package.
+`scripts/verify_release.py` validates the structure of a companion data bundle: required files, row counts (84 gold pairs, 3,455-candidate pool, 193,480 full-rank predictions, 11 benchmark methods) and the LOVO56 headline metrics of the reference model. `scripts/check_checkpoint.py` loads a released checkpoint with the public model definition, infers the architecture dimensions from the state dict, and reports parameter counts and validation metrics.
+
+```bash
+python scripts/verify_release.py --zenodo-root /path/to/unpacked/deepentry-dataset-v1.1.0
+python scripts/check_checkpoint.py --checkpoint /path/to/unpacked/deepentry-dataset-v1.1.0/models/lovo56/model_best.pth
+```
+
+See `docs/REPRODUCE.md` for full reproducibility instructions, including the LOVO56 training entry point.
 
 ## Citation
 

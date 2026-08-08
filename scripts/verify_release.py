@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the DeepEntry public release bundle."""
+"""Validate the DeepEntry v1.1 (LOVO56) public release bundle."""
 from __future__ import annotations
 
 import argparse
@@ -8,7 +8,8 @@ import sys
 
 import pandas as pd
 
-EXPECTED = {"MRR": 0.4011, "Recall@10": 0.6491, "Recall@20": 0.7368}
+# LOVO56 headline metrics of the reference model (ALL56, 3-seed mean)
+EXPECTED = {"MRR": 0.4927, "R@10": 0.6488, "R@20": 0.6845}
 
 
 def check_file(path: Path, errors: list[str]) -> None:
@@ -21,10 +22,10 @@ def check_count(label: str, observed: int, expected: int, errors: list[str]) -> 
         errors.append(f"{label} count mismatch: observed {observed}, expected {expected}")
 
 
-def count_fasta_records(path: Path) -> int:
+def count_lines(path: Path) -> int:
     if not path.exists():
         return 0
-    return sum(1 for line in path.read_text(encoding="utf-8").splitlines() if line.startswith(">"))
+    return len([line for line in path.read_text(encoding="utf-8").splitlines() if line.strip()])
 
 
 def main() -> int:
@@ -35,13 +36,15 @@ def main() -> int:
     repo = Path(__file__).resolve().parents[1]
     errors: list[str] = []
 
-    benchmark = repo / "results" / "main_benchmark_38virus.tsv"
+    # ---- repository benchmark table (in-repo copy) ----
+    benchmark = repo / "results" / "lovo56_benchmark_11_methods.tsv"
     check_file(benchmark, errors)
+    check_count("benchmark table rows", count_lines(benchmark), 12, errors)
     if benchmark.exists():
         df = pd.read_csv(benchmark, sep="\t")
-        row = df[df["model"] == "DeepEntry"]
+        row = df[df["model"] == "DeepEntry_current"]
         if row.empty:
-            errors.append("DeepEntry row missing from main benchmark table")
+            errors.append("DeepEntry_current row missing from benchmark table")
         else:
             row = row.iloc[0]
             for key, expected in EXPECTED.items():
@@ -49,56 +52,59 @@ def main() -> int:
                 if abs(value - expected) > 5e-4:
                     errors.append(f"{key} mismatch: observed {value}, expected {expected}")
 
+    # ---- companion archive (Zenodo) ----
     required = [
         args.zenodo_root / "README.txt",
         args.zenodo_root / "MANIFEST.txt",
-        args.zenodo_root / "metadata/benchmark_run_manifest.json",
-        args.zenodo_root / "data/training/integrated_dataset_clean.tsv",
-        args.zenodo_root / "data/validation/crispr_recall_top200_20260308.tsv",
-        args.zenodo_root / "data/training/receptor_candidate_pool_ids.txt",
-        args.zenodo_root / "data/training/receptor_candidate_pool.fasta",
-        args.zenodo_root / "figures/main/Figure1_workflow.pdf",
-        args.zenodo_root / "figures/main/Figure2_benchmark.pdf",
-        args.zenodo_root / "figures/supplementary/FigureS1_bio_credibility.pdf",
-        args.zenodo_root / "results/main_benchmark_38virus.tsv",
-        args.zenodo_root / "results/full_per_fold/leave_one_virus/replicate_01/fold_results.json",
-        args.zenodo_root / "results/full_per_fold/controlled_dynamic_prior/replicate_01/fold_results.json",
+        args.zenodo_root / "data/training/gold_receptor_pairs_accession_confirmed.csv",
+        args.zenodo_root / "data/training/candidate_pool_3455_ids.txt",
+        args.zenodo_root / "data/training/candidate_pool_3455_annotation.tsv",
+        args.zenodo_root / "data/training/expanded_receptor_pairs.json",
+        args.zenodo_root / "data/validation/crispr_sirna_overlap_forest.tsv",
+        args.zenodo_root / "data/validation/crispr_sirna_overlap_meta.tsv",
+        args.zenodo_root / "data/validation/crispr_sirna_overlap_summary.tsv",
+        args.zenodo_root / "data/validation/crispr_sirna_raw_vs_leakage_compare.tsv",
+        args.zenodo_root / "models/lovo56/config_seed42.yaml",
+        args.zenodo_root / "models/lovo56/model_best.pth",
+        args.zenodo_root / "results/benchmark/lovo56_benchmark_11_methods.tsv",
+        args.zenodo_root / "results/benchmark/lovo56_fullrank_3seed_zscore_mean.tsv",
+        args.zenodo_root / "results/benchmark/lovo56_split_defs.json",
+        args.zenodo_root / "results/ablation/lovo56_prior_ablation_metrics_by_seed.tsv",
+        args.zenodo_root / "results/biological_credibility/lovo56_watch_case_summary_20260622.tsv",
+        args.zenodo_root / "supplementary_tables/Supplementary_Tables_NatComm_20260722.zip",
     ]
     for path in required:
         check_file(path, errors)
 
-    candidate_ids = args.zenodo_root / "data/training/receptor_candidate_pool_ids.txt"
-    if candidate_ids.exists():
-        count = len([line for line in candidate_ids.read_text(encoding="utf-8").splitlines() if line.strip()])
-        check_count("receptor candidate pool", count, 2922, errors)
     check_count(
-        "receptor candidate FASTA",
-        count_fasta_records(args.zenodo_root / "data/training/receptor_candidate_pool.fasta"),
-        2922,
+        "gold receptor pairs",
+        count_lines(args.zenodo_root / "data/training/gold_receptor_pairs_accession_confirmed.csv"),
+        85,
         errors,
     )
-    model_root = args.zenodo_root / "models/receptor_ranker_38fold"
-    if model_root.exists():
-        checkpoint_files = list(model_root.glob("*/*/fold_*/model_best.pth"))
-        check_count("complete benchmark checkpoint", len(checkpoint_files), 342, errors)
-        for protocol in ["leave_one_virus", "leave_family_out", "leave_genus_out"]:
-            protocol_count = len(list((model_root / protocol).glob("replicate_*/fold_*/model_best.pth")))
-            check_count(f"{protocol} checkpoint", protocol_count, 114, errors)
-    else:
-        errors.append(f"missing: {model_root}")
+    check_count(
+        "candidate pool",
+        count_lines(args.zenodo_root / "data/training/candidate_pool_3455_ids.txt"),
+        3455,
+        errors,
+    )
+    check_count(
+        "fullrank predictions",
+        count_lines(args.zenodo_root / "results/benchmark/lovo56_fullrank_3seed_zscore_mean.tsv"),
+        193481,
+        errors,
+    )
+    check_count(
+        "benchmark table rows",
+        count_lines(args.zenodo_root / "results/benchmark/lovo56_benchmark_11_methods.tsv"),
+        12,
+        errors,
+    )
 
-    per_fold_root = args.zenodo_root / "results/full_per_fold"
-    if per_fold_root.exists():
-        for protocol, expected in {
-            "leave_one_virus": 3,
-            "controlled_dynamic_prior": 3,
-            "leave_family_out": 3,
-            "leave_genus_out": 3,
-        }.items():
-            count = len([p for p in (per_fold_root / protocol).glob("replicate_*/fold_results.json")])
-            check_count(f"{protocol} per-fold result", count, expected, errors)
-    else:
-        errors.append(f"missing: {per_fold_root}")
+    figures_main = [p.name for p in (args.zenodo_root / "figures/main").glob("Figure*_LOVO56_*.pdf")]
+    check_count("main figures", len(figures_main), 6, errors)
+    figures_supp = [p.name for p in (args.zenodo_root / "figures/supplementary").glob("FigureS*.pdf")]
+    check_count("supplementary figures", len(figures_supp), 4, errors)
 
     if errors:
         print("Release verification failed:")
@@ -107,7 +113,7 @@ def main() -> int:
         return 1
 
     print("Release verification passed.")
-    print("DeepEntry headline metrics:")
+    print("DeepEntry headline metrics (LOVO56):")
     for key, value in EXPECTED.items():
         print(f"- {key}: {value:.4f}")
     return 0

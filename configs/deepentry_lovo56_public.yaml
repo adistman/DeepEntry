@@ -1,0 +1,65 @@
+data:
+  embeddings_path: data/embeddings/esm2_3b_embeddings_HumanSurfaceomePlus_v1.1_3455.pkl
+  expanded_pairs: data/training/expanded_receptor_pairs.json
+  gold_pairs: data/training/gold_receptor_pairs_accession_confirmed.csv
+  receptor_candidate_pool: data/training/candidate_pool_3455_ids.txt
+evaluation:
+  ks:
+  - 1
+  - 5
+  - 10
+  - 50
+  - 100
+  - 500
+metadata:
+  base_config_snapshot: models/lovo56/config_seed42.yaml
+  candidate_pool_name: HumanSurfaceomePlus_v1.1_3455_gold_supplement_20260612
+  candidate_pool_policy: human-only layered medium-scale receptor-enriched pool; non-human
+    proteins excluded
+  candidate_pool_size: 3455
+  created_date: '2026-06-21'
+  version: DeepEntry model v1.1 accession-confirmed retrain
+  seed: 42
+  curation_release: gold_lovo59_role_evidence_class_reviewed_v2_20260621_accession_confirmed
+  gold_pairs_sha256: 35b7445cc36db65a4dc7211cef38de13fbb4d7d5a75aa5cb70c6cb985cd01244
+  embedding_cache: data/embeddings/esm2_3b_embeddings_HumanSurfaceomePlus_v1.1_3455.pkl
+  embedding_cache_note: Q01299 added; Q69091 already present
+  base_seed42_config: models/lovo56/config_seed42.yaml
+model:
+  checkpoint: models/lovo56/model_best.pth
+  dropout: 0.5
+  esm_dim: 5120
+  hidden_dim: 256
+  name: LowRankInteractionModel
+  proj_dim: 128
+out_dir: models/lovo56
+training:
+  batch_size: 16
+  dual_pos_reweight_combine: mul
+  early_stopping_patience: 12
+  epochs: 80
+  expanded_cap_per_receptor: 25
+  gradient_clip: 1.0
+  hard_neg_family_frac: 0.0
+  hard_neg_family_topk: 32
+  hard_neg_frac: 0.7
+  hard_pool_size: 800
+  hard_score_batch_size: 512
+  learning_rate: 3.0e-05
+  listwise_k: 50
+  listwise_temperature: 1.0
+  loss: listwise
+  neg_ratio: 50.0
+  pos_weight: 20.0
+  ranking_loss_weight: 0.0
+  ranking_margin: 0.5
+  receptor_pos_reweight_alpha: 0.3
+  receptor_pos_reweight_max: 1.8
+  receptor_pos_reweight_min: 0.6
+  receptor_pos_reweight_mode: inv_sqrt
+  selection_metric: has_pos_at_1
+  virus_pos_reweight_alpha: 0.5
+  virus_pos_reweight_max: 2.5
+  virus_pos_reweight_min: 0.7
+  virus_pos_reweight_mode: inv_sqrt
+  weight_decay: 0.2

@@ -4,16 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "deepentry"
-version = "1.0.0"
-description = "Leakage-aware receptor-candidate prioritization utilities for virus-host entry analysis"
+version = "1.1.0"
+description = "Deep learning model and release utilities for virus-host receptor prediction (LOVO56)"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [{name = "Junwen Luan"}]
-dependencies = ["numpy", "pandas", "scipy", "pyyaml"]
+dependencies = ["numpy", "pandas", "scipy", "pyyaml", "torch>=2.0"]
 
 [project.optional-dependencies]
-model = ["torch>=2.0"]
+dev = ["pytest"]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
+include = ["models*"]

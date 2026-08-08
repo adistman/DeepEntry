@@ -1,6 +1,0 @@
-group	n	MRR	R@10	R@20	rank1_fraction	interpretation
-all_38_evaluation_viruses	38	0.3968	0.6579	0.7632	0.211	all evaluation viruses
-cluster_overlap_ge30pct	25	0.45	0.64	0.72	0.28	evaluation virus shares >=30% identity cluster with training viral protein
-truly_independent_lt30pct	13	0.2946	0.6923	0.8462	0.077	no >=30% identity cluster overlap with training viral proteins
-high_homology_ge90pct	16	0.4729	0.75	0.75	0.25	best training homolog >=90% identity
-moderate_homology_30to90pct	9	0.4093	0.4444	0.6667	0.333	best training homolog 30-90% identity

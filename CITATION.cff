@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software or the accompanying data, please cite the associated manuscript and archived dataset."
-title: "DeepEntry: leakage-aware receptor-candidate prioritization for virus-host entry analysis"
-version: 1.0.0
-date-released: 2026-05-05
+title: "DeepEntry: Deep Learning for Virus-Host Receptor Prediction"
+version: 1.1.0
+date-released: 2026-08-08
 authors:
   - family-names: "Luan"
     given-names: "Junwen"

@@ -1,6 +1,6 @@
 # Installation
 
-DeepEntry release utilities require Python 3.9 or newer.
+DeepEntry requires Python 3.9 or newer and PyTorch (>= 2.0).
 
 ```bash
 python -m venv .venv
@@ -9,10 +9,15 @@ pip install -e .
 pip install -r requirements.txt
 ```
 
-To load released model checkpoints, install the optional model dependency:
+Optional development dependencies (tests):
 
 ```bash
-pip install -e ".[model]"
+pip install -e ".[dev]"
+pytest
 ```
 
-The large data archive is not stored in the code repository. Download it from https://doi.org/10.5281/zenodo.20049088 and unpack the companion archive next to this repository, or set `DEEPENTRY_DATA_ROOT` and `DEEPENTRY_MODEL_ROOT` to the relevant locations.
+The large data archive is not stored in the code repository. Download the
+companion archive from the GitHub Release assets
+(https://github.com/adistman/DeepEntry/releases) and unpack it. The LOVO56
+configuration and training script use paths relative to the archive root, so
+run them from inside the unpacked archive directory.

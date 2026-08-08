@@ -8,7 +8,6 @@ venv/
 
 # Large or generated artifacts
 /data/
-/models/
 /outputs/
 *.pth
 *.pt
