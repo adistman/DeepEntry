@@ -58,9 +58,20 @@ including viruses outside the 56-fold benchmark.
 
 ## Metric aggregation
 
-Reported metrics follow the convention documented in the README
-("Metric definition and aggregation"): per-seed, best-known receptor per
-virus, mean over the 56 benchmark viruses, then mean over seeds 42/43/44.
-`scripts/aggregate_lovo56_metrics.py` recomputes the headline metrics from
-`results/benchmark/lovo56_fullrank_3seed_zscore_mean.tsv` and checks them
-against `results/benchmark/lovo56_benchmark_11_methods.tsv`.
+Two evaluation protocols are used in the release; the manuscript reports
+the nested-validation protocol as the primary result
+(`results/ablation/lovo56_prior_ablation_metrics_by_seed.tsv`,
+baseline_no_prior, mean MRR 0.3056 over seeds 42/43/44), and the
+11-method comparison under the test-time-selection protocol
+(`results/benchmark/lovo56_benchmark_11_methods.tsv`, DeepEntry mean MRR
+0.4927), where each fold's checkpoint is selected on the held-out unit
+itself (disclosed in docs/REPRODUCE.md). The two sets of numbers differ
+only in the checkpoint-selection protocol; all methods in the 11-method
+table share identical folds, candidate pool and selection protocol.
+
+Metrics follow the convention documented in the README ("Metric
+definition and aggregation"): per-seed, best-known receptor per unit,
+mean over the 56 benchmark units, then mean over seeds 42/43/44.
+`scripts/aggregate_lovo56_metrics.py` recomputes the 11-method table
+metrics from `results/benchmark/lovo56_fullrank_3seed_zscore_mean.tsv`
+and checks them against `results/benchmark/lovo56_benchmark_11_methods.tsv`.

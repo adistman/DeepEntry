@@ -32,7 +32,39 @@ The original 38-virus release is archived at:
 
 ## Benchmark results (v1.1.0 LOVO56)
 
-Aggregate metrics over the 56 benchmark units (viral proteins; 52 unique virus names; 3-seed z-score mean ensemble); method naming follows the release file `results/benchmark/lovo56_benchmark_11_methods.tsv`:
+The manuscript reports the **nested-validation protocol** as the primary
+result; the 11-method comparison is evaluated under the
+test-time-selection protocol (see `docs/REPRODUCE.md`, "Model selection
+protocol") so that DeepEntry and the published baselines are scored under
+identical conditions.
+
+### Primary result (nested-validation protocol)
+
+Metrics of the reference model (the `baseline_no_prior` variant, i.e. the
+same model as "DeepEntry" in the 11-method table below), per seed and
+averaged over seeds 42/43/44, from
+`results/ablation/lovo56_prior_ablation_metrics_by_seed.tsv`:
+
+| Seed | MRR | R@1 | R@5 | R@10 | R@50 | R@100 | Mean best rank |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 42 | 0.2922 | 0.1786 | 0.4286 | 0.5000 | 0.6429 | 0.6786 | 210.7 |
+| 43 | 0.3149 | 0.2321 | 0.4107 | 0.4821 | 0.6250 | 0.7143 | 216.9 |
+| 44 | 0.3096 | 0.2143 | 0.4107 | 0.4821 | 0.6250 | 0.6964 | 195.5 |
+
+Mean over seeds 42/43/44: **MRR 0.3056**, R@1 0.2083, R@5 0.4167, R@10
+0.4881, R@50 0.6310, R@100 0.6964, mean best rank 207.7. Recall@20 was
+not reported under this protocol.
+
+### 11-method comparison (test-time-selection protocol)
+
+Aggregate metrics over the 56 benchmark units (viral proteins; 52 unique
+virus names), mean of per-seed scores for seeds 42/43/44. Under this
+protocol each fold's checkpoint is selected on the held-out unit itself,
+which imparts an optimistic bias relative to the nested-validation
+numbers above (see `docs/REPRODUCE.md`); the table is directly comparable
+only within itself, where all methods share identical folds, candidate
+pool and selection protocol. Method naming follows the release file
+`results/benchmark/lovo56_benchmark_11_methods.tsv`:
 
 | Method | MRR | Recall@10 | Recall@20 |
 |---|---:|---:|---:|
