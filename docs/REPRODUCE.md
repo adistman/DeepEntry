@@ -44,6 +44,25 @@ The training script requires the candidate pool embeddings from
 `data/embeddings/` and the released Stage-2 checkpoint from `models/lovo56/`
 as initialization.
 
+## Model selection protocol (disclosure)
+
+The published benchmark numbers were produced by a per-fold checkpoint
+selection protocol that evaluates on the held-out virus itself. For each
+fold, fine-tuning selects the best checkpoint by the held-out virus's own
+predictions (`selection_metric: has_pos_at_1`, tie-broken by MRR, in
+`models/lovo56/config_seed42.yaml`) with early stopping
+(`early_stopping_patience: 12`); see the per-epoch evaluation in
+`train_stage3_receptor.py`. Because checkpoint selection and evaluation
+both use the held-out virus's predictions, the reported metrics carry an
+optimistic bias whose magnitude is largest for per-virus 0/1-type metrics
+(has_pos_at_1, Recall@10/20). The direction of the bias is consistent with
+the nested-validation results in `results/ablation/` (seed 42 MRR 0.2922
+vs 0.4985 in the benchmark table), although the two pipelines differ in
+more than the selection protocol. The protocol is disclosed here so that
+the numbers can be interpreted correctly; a manuscript revision should
+either disclose this protocol in the Methods or recompute the benchmark
+under a fixed-epoch protocol.
+
 ## Recreate figures
 
 The companion archive includes the final PDF figures used for submission.
