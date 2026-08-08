@@ -1,12 +1,26 @@
 # DeepEntry
 
-DeepEntry is a leakage-aware framework for prioritizing host receptor candidates for viral entry proteins. The release provides lightweight verification utilities, public-facing result tables, and documentation for using the accompanying data and complete 38-fold benchmark checkpoint sets.
+DeepEntry is a leakage-aware framework for prioritizing host receptor candidates for viral entry proteins. The repository provides lightweight verification utilities, public-facing result tables, and documentation for using the accompanying data and model checkpoints.
 
 This repository accompanies a manuscript under consideration. It is not a clinical diagnostic tool. CRISPR/siRNA host-factor screens are used as host-factor context and do not constitute direct receptor validation.
 
 Repository URL: https://github.com/adistman/DeepEntry
 
-Data and model archive: https://doi.org/10.5281/zenodo.20049088
+## Releases
+
+### v1.1.0 — LOVO56 (56-virus benchmark, current)
+
+The current data release provides the 56-virus leave-one-virus-out (LOVO) benchmark with a 3,455-candidate receptor pool:
+
+- **GitHub Release**: https://github.com/adistman/DeepEntry/releases/tag/v1.1.0
+- Package: `deepentry-dataset-v1.1.0.tar.gz`
+- Contents: curated gold receptor pairs, ESM2-3B embeddings, trained model checkpoint and configuration, full-rank predictions, 11-method benchmark comparison, prior-knowledge ablation, CRISPR/siRNA validation data, main and supplementary figure PDFs, and Supplementary Tables S1-S9.
+
+### v1.0.0 — 38-virus benchmark (historical)
+
+The original 38-virus release is archived at:
+
+- Data and model archive: https://doi.org/10.5281/zenodo.20049088
 
 ## Repository contents
 
@@ -17,7 +31,7 @@ Data and model archive: https://doi.org/10.5281/zenodo.20049088
 - `results/`: manuscript-facing benchmark and diagnostic tables.
 - `docs/`: installation, data and reproducibility notes.
 
-Large data files, complete 38-fold benchmark checkpoint sets and figure PDFs are distributed in the companion archive.
+Large data files, complete fold-checkpoint sets and figure PDFs are distributed in the companion archives listed under Releases.
 
 ## Installation
 
@@ -37,7 +51,7 @@ python scripts/verify_release.py --zenodo-root ../deepentry-zenodo-release-compl
 python scripts/check_checkpoint.py --checkpoint ../deepentry-zenodo-release-complete/models/receptor_ranker_38fold/leave_one_virus/replicate_01/fold_001/model_best.pth
 ```
 
-Expected headline metrics for the 38-virus leave-one-virus-out benchmark:
+Expected headline metrics for the v1.0.0 38-virus leave-one-virus-out benchmark:
 
 | Model | MRR | Recall@10 | Recall@20 |
 |---|---:|---:|---:|
@@ -51,8 +65,9 @@ Expected headline metrics for the 38-virus leave-one-virus-out benchmark:
 Please cite the associated manuscript and the archived companion dataset.
 
 - Code repository: https://github.com/adistman/DeepEntry
-- Data and model archive: https://doi.org/10.5281/zenodo.20049088
+- Current data release (v1.1.0, LOVO56): https://github.com/adistman/DeepEntry/releases/tag/v1.1.0
+- Historical data archive (v1.0.0): https://doi.org/10.5281/zenodo.20049088
 
 ## License
 
-Code is released under the MIT License. Data and figure files in the companion archive are intended for CC BY 4.0 release unless superseded by third-party source restrictions.
+Code is released under the MIT License. Data and figure files in the companion archives are intended for CC BY 4.0 release unless superseded by third-party source restrictions.
