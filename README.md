@@ -1,6 +1,6 @@
 # DeepEntry
 
-DeepEntry is a leakage-aware framework for prioritizing host receptor candidates for viral entry proteins, evaluated on the LOVO56 benchmark: a 56-virus leave-one-virus-out (LOVO) retrieval benchmark over a 3,455-candidate human receptor pool. This repository provides verification utilities, public-facing result tables, and documentation for using the accompanying v1.1.0 data release and model checkpoints.
+DeepEntry is a leakage-aware framework for prioritizing host receptor candidates for viral entry proteins, evaluated on the LOVO56 benchmark: a 56-fold leave-one-viral-protein-out (LOVO) retrieval benchmark (56 viral proteins from 52 virus names) over a 3,455-candidate human receptor pool. This repository provides verification utilities, public-facing result tables, and documentation for using the accompanying v1.1.0 data release and model checkpoints.
 
 This repository accompanies a manuscript under consideration. It is not a clinical diagnostic tool. CRISPR/siRNA host-factor screens are used as host-factor context and do not constitute direct receptor validation.
 
@@ -8,9 +8,17 @@ Repository URL: https://github.com/adistman/DeepEntry
 
 ## Releases
 
-### v1.1.0 - LOVO56 (56-virus benchmark, current)
+### v1.1.0 - LOVO56 (56-fold benchmark, current)
 
-The current data release provides the 56-virus leave-one-virus-out (LOVO) benchmark with a 3,455-candidate receptor pool:
+The current data release provides the 56-fold leave-one-viral-protein-out
+(LOVO) benchmark with a 3,455-candidate receptor pool:
+
+- **Split units**: each fold holds out one viral entry protein (viral_id);
+  the 56 folds correspond to 52 unique virus names, because four viruses
+  contribute two entry proteins each: EBV (P03200/P03231), CMV
+  (P06473/P12824), HSV-1 (P06477/Q69091) and Mammalian orthoreovirus
+  (P03527/P03528). Metrics are aggregated over the 56 protein units, so
+  these four viruses are weighted twice.
 
 - **GitHub Release**: https://github.com/adistman/DeepEntry/releases/tag/v1.1.0
 - Package: `deepentry-dataset-v1.1.0.tar.gz`
@@ -24,7 +32,7 @@ The original 38-virus release is archived at:
 
 ## Benchmark results (v1.1.0 LOVO56)
 
-Aggregate metrics over the 56 benchmark viruses (3-seed z-score mean ensemble); method naming follows the release file `results/benchmark/lovo56_benchmark_11_methods.tsv`:
+Aggregate metrics over the 56 benchmark units (viral proteins; 52 unique virus names; 3-seed z-score mean ensemble); method naming follows the release file `results/benchmark/lovo56_benchmark_11_methods.tsv`:
 
 | Method | MRR | Recall@10 | Recall@20 |
 |---|---:|---:|---:|
@@ -58,7 +66,7 @@ checks them against `results/lovo56_benchmark_11_methods.tsv`.
 ## Repository contents
 
 - `models/`: public model definition (`low_rank_model.py`, LowRankInteractionModel) used by the released checkpoints.
-- `train_stage3_receptor.py`: leave-one-virus-out (LOVO) fine-tuning entry point for the LOVO56 benchmark.
+- `train_stage3_receptor.py`: leave-one-viral-protein-out (LOVO) fine-tuning entry point for the LOVO56 benchmark.
 - `scripts/verify_release.py`: validates a companion data bundle and reproduces headline table checks.
 - `scripts/check_checkpoint.py`: verifies that a released checkpoint can be loaded with the public model definition.
 - `configs/deepentry_lovo56_public.yaml`: LOVO56 configuration template with package-relative paths.

@@ -31,8 +31,10 @@ cd /path/to/unpacked/deepentry-dataset-v1.1.0
 python /path/to/DeepEntry/train_stage3_receptor.py --config models/lovo56/config_seed42.yaml
 ```
 
-This runs the leave-one-virus-out fine-tuning over all 56 folds and writes
-per-fold results, which aggregate into the published benchmark table.
+This runs the leave-one-viral-protein-out fine-tuning over all 56 folds (one
+viral entry protein held out per fold; the 56 folds correspond to 52 unique
+virus names, see README "Split units") and writes per-fold results, which
+aggregate into the published benchmark table.
 Single-fold runs and smoke tests are supported:
 
 ```bash

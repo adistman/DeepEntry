@@ -43,6 +43,19 @@ https://doi.org/10.5281/zenodo.20049088.
   non-standard or host-species labels may appear for entries outside the
   benchmark set.
 
+## LOVO56 split units
+
+The benchmark holds out one viral entry protein (viral_id) per fold: the 56
+folds correspond to 52 unique virus names, because four viruses contribute
+two entry proteins each, split into separate folds: EBV (P03200/P03231),
+CMV (P06473/P12824), HSV-1 (P06477/Q69091) and Mammalian orthoreovirus
+(P03527/P03528). During training of a fold, the other entry protein of the
+same virus remains in the training set (the default holdout scope is
+`viral_id`). Metrics are aggregated over the 56 protein units, so these four
+viruses are weighted twice in the aggregate numbers. The 54 files under
+`data/interactions/by_virus/` cover all viruses in the curation pipeline,
+including viruses outside the 56-fold benchmark.
+
 ## Metric aggregation
 
 Reported metrics follow the convention documented in the README
