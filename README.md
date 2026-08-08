@@ -1,6 +1,6 @@
 # DeepEntry
 
-DeepEntry is a leakage-aware framework for prioritizing host receptor candidates for viral entry proteins. The repository provides lightweight verification utilities, public-facing result tables, and documentation for using the accompanying data and model checkpoints.
+DeepEntry is a leakage-aware framework for prioritizing host receptor candidates for viral entry proteins, evaluated on the LOVO56 benchmark: a 56-virus leave-one-virus-out (LOVO) retrieval benchmark over a 3,455-candidate human receptor pool. This repository provides verification utilities, public-facing result tables, and documentation for using the accompanying v1.1.0 data release and model checkpoints.
 
 This repository accompanies a manuscript under consideration. It is not a clinical diagnostic tool. CRISPR/siRNA host-factor screens are used as host-factor context and do not constitute direct receptor validation.
 
