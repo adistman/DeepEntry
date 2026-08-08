@@ -8,7 +8,7 @@ Repository URL: https://github.com/adistman/DeepEntry
 
 ## Releases
 
-### v1.1.0 - LOVO56 (56-fold benchmark, current)
+### v1.1.0 - LOVO56 (56-fold benchmark)
 
 The current data release provides the 56-fold leave-one-viral-protein-out
 (LOVO) benchmark with a 3,455-candidate receptor pool:
@@ -24,11 +24,7 @@ The current data release provides the 56-fold leave-one-viral-protein-out
 - Package: `deepentry-dataset-v1.1.0.tar.gz`
 - Contents: curated gold receptor pairs, ESM2-3B embeddings, trained model checkpoint and configuration, full-rank predictions, 11-method benchmark comparison, prior-knowledge ablation, CRISPR/siRNA validation data, main and supplementary figure PDFs, and Supplementary Tables S1-S9.
 
-### v1.0.0 - 38-virus benchmark (historical)
-
-The original 38-virus release is archived at:
-
-- Data and model archive: https://doi.org/10.5281/zenodo.20049088
+- **Zenodo archive**: https://doi.org/10.5281/zenodo.20049088
 
 ## Benchmark results (v1.1.0 LOVO56)
 
@@ -138,8 +134,8 @@ See `docs/REPRODUCE.md` for full reproducibility instructions, including the LOV
 Please cite the associated manuscript and the archived companion dataset.
 
 - Code repository: https://github.com/adistman/DeepEntry
-- Current data release (v1.1.0, LOVO56): https://github.com/adistman/DeepEntry/releases/tag/v1.1.0
-- Historical data archive (v1.0.0): https://doi.org/10.5281/zenodo.20049088
+- Data release (v1.1.0, LOVO56): https://github.com/adistman/DeepEntry/releases/tag/v1.1.0
+- Zenodo archive: https://doi.org/10.5281/zenodo.20049088
 
 ## License
 

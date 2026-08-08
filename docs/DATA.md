@@ -26,8 +26,6 @@ directory. Use the release scripts in this repository
 (`scripts/verify_release.py`, `scripts/check_checkpoint.py`) to validate file
 presence, row counts, and headline metrics.
 
-The earlier 38-virus release (v1.0.0) remains archived at
-https://doi.org/10.5281/zenodo.20049088.
 
 ## Data provenance and third-party sources
 
