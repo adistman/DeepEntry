@@ -140,3 +140,14 @@ Please cite the associated manuscript and the archived companion dataset.
 ## License
 
 Code is released under the MIT License. Data and figure files in the companion archives are intended for CC BY 4.0 release unless superseded by third-party source restrictions.
+
+## User manual and worked examples
+
+A user manual (`docs/USER_MANUAL.md`) documents the deployment pipeline:
+embedding a query protein with frozen ESM-2 3B (dual-end, 5,120-dim) and
+ranking the fixed 3,455-protein pool with the 168-checkpoint ensemble.
+Two worked examples are verified end-to-end: rubella virus E1 reproduces
+NECTIN4 at rank 12 of 3,455 (byte-identical to the archived reference) and
+SARS-CoV-2 spike ranks ACE2 first. Set `DEEPENTRY_ROOT` to the release-asset
+root before running the scripts in `deploy/`. The package inventory is in
+`docs/REVIEWER_PACKAGE.md`.
