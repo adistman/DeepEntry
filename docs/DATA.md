@@ -73,3 +73,5 @@ mean over the 56 benchmark units, then mean over seeds 42/43/44.
 `scripts/aggregate_lovo56_metrics.py` recomputes the 11-method table
 metrics from `results/benchmark/lovo56_fullrank_3seed_zscore_mean.tsv`
 and checks them against `results/benchmark/lovo56_benchmark_11_methods.tsv`.
+
+Zenodo DOI: https://doi.org/10.5281/zenodo.20049088
